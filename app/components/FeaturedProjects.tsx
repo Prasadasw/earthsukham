@@ -4,24 +4,53 @@ import { Suspense, useMemo, useState, useEffect } from "react";
 import FeaturedCarousel from "./FeaturedCarousel";
 
 const CARDS = [
-    { id: "fallback-1", title: "Sadhna Obsidian", location: "Jagatpur, Ahmedabad", price: "₹ 1.9 Cr Onwards", config: "4,5 BHK Apartment | 3375 - 5544 sq ft", builder: "By Sadhna Reality", status: "Under Construction", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600", slug: "#" },
-    { id: "fallback-2", title: "Dev The Galaxy", location: "Opp Orchid Sky, Club 07 Road, Shela...", price: "₹ 1.11 Cr Onwards", config: "3 BHK Apartment | 2010 sq ft", builder: "By Dev Infinity Buildcon", status: "Launch", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600", slug: "#" },
-    { id: "fallback-3", title: "Shaligram Prestige", location: "Shela, Ahmedabad", price: "₹ 1.03 Cr Onwards", config: "3 BHK Apartment | Area on request", builder: "By Shaligram Developers", status: "Launch", img: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=600", slug: "#" },
-    { id: "fallback-4", title: "Ashapura Samarpan", location: "Shela, Ahmedabad", price: "₹ 90 Lac Onwards", config: "3 BHK Apartment | Area on request", builder: "By Ashapura buildspace", status: "Launch", img: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=600", slug: "#" },
-    { id: "fallback-5", title: "Earth Sapphire", location: "Bopal, Ahmedabad", price: "₹ 1.5 Cr Onwards", config: "4 BHK Premium | 4200 sq ft", builder: "By Earth Builders", status: "Launch", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600", slug: "#" },
-    { id: "fallback-6", title: "Sukham Residency", location: "SG Highway, Ahmedabad", price: "₹ 2.2 Cr Onwards", config: "5 BHK Villa | 6000 sq ft", builder: "By Sukham Developers", status: "Under Construction", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600", slug: "#" },
+  { id: "fallback-1", title: "Sadhna Obsidian", location: "Jagatpur, Ahmedabad", price: "₹ 1.9 Cr Onwards", config: "4,5 BHK Apartment | 3375 - 5544 sq ft", builder: "By Sadhna Reality", status: "Under Construction", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600", slug: "sadhna-obsidian" },
+  { id: "fallback-2", title: "Dev The Galaxy", location: "Opp Orchid Sky, Club 07 Road, Shela...", price: "₹ 1.11 Cr Onwards", config: "3 BHK Apartment | 2010 sq ft", builder: "By Dev Infinity Buildcon", status: "Launch", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600", slug: "dev-the-galaxy" },
+  { id: "fallback-3", title: "Shaligram Prestige", location: "Shela, Ahmedabad", price: "₹ 1.03 Cr Onwards", config: "3 BHK Apartment | Area on request", builder: "By Shaligram Developers", status: "Launch", img: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=600", slug: "shaligram-prestige" },
+  { id: "fallback-4", title: "Ashapura Samarpan", location: "Shela, Ahmedabad", price: "₹ 90 Lac Onwards", config: "3 BHK Apartment | Area on request", builder: "By Ashapura buildspace", status: "Launch", img: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=600", slug: "ashapura-samarpan" },
+  { id: "fallback-5", title: "Earth Sapphire", location: "Bopal, Ahmedabad", price: "₹ 1.5 Cr Onwards", config: "4 BHK Premium | 4200 sq ft", builder: "By Earth Builders", status: "Launch", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600", slug: "earth-sapphire" },
+  { id: "fallback-6", title: "Sukham Residency", location: "SG Highway, Ahmedabad", price: "₹ 2.2 Cr Onwards", config: "5 BHK Villa | 6000 sq ft", builder: "By Sukham Developers", status: "Under Construction", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600", slug: "sukham-residency" },
   ];
+
+interface FeaturedCard {
+  id: string | number;
+  title: string;
+  location: string;
+  price: string;
+  config: string;
+  builder: string;
+  status: string;
+  img: string;
+  slug?: string;
+}
+
+interface ApiProperty {
+  id: string | number;
+  propertyName?: string;
+  location?: string;
+  city?: string;
+  tentativeBudget?: string;
+  configuration?: string;
+  propertyType?: string;
+  carpetArea?: string | number;
+  builder?: string;
+  possession?: string;
+  multipleImages?: string[];
+  slug?: string;
+}
+
+const getPropertySlug = (property: Pick<ApiProperty, 'slug' | 'propertyName'>) => property.slug || property.propertyName?.toLowerCase().trim().replace(/\s+/g, '-');
 
 function FeaturedProjectsContent() {
   const searchParams = useSearchParams();
-  const [cards, setCards] = useState<any[]>(CARDS);
+  const [cards, setCards] = useState<FeaturedCard[]>(CARDS);
   
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'}/properties`)
       .then(res => res.json())
       .then(data => {
         if (data.success && data.properties && data.properties.length > 0) {
-          const mapped = data.properties.map((p: any) => ({
+          const mapped: FeaturedCard[] = data.properties.map((p: ApiProperty) => ({
             id: p.id,
             title: p.propertyName,
             location: `${p.location ? p.location + ', ' : ''}${p.city || ''}`.trim(),
@@ -30,7 +59,7 @@ function FeaturedProjectsContent() {
             builder: p.builder ? `By ${p.builder}` : '',
             status: p.possession ? `Possession: ${p.possession}` : 'Launch',
             img: p.multipleImages?.[0] ? `http://localhost:8000${p.multipleImages[0]}` : "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600",
-            slug: p.slug
+            slug: getPropertySlug(p)
           }));
           setCards(mapped);
         }
@@ -70,4 +99,4 @@ export default function FeaturedProjects() {
       <FeaturedProjectsContent />
     </Suspense>
   );
-}
+}

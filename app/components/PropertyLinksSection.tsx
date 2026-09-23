@@ -16,6 +16,13 @@ const commercialLocations = [
   "Hinjewadi Phase 2", "Hinjewadi Phase 3", "Wakad", "Baner", "Aundh"
 ];
 
+const getPropertySearchHref = (location: string, type?: string, category?: string) => {
+  const params = new URLSearchParams({ query: location });
+  if (type) params.set('type', type);
+  if (category) params.set('category', category);
+  return `/properties?${params.toString()}`;
+};
+
 export default function PropertyLinksSection() {
   const [activeTab, setActiveTab] = useState<'residential' | 'commercial'>('residential');
   const [showAll, setShowAll] = useState(false);
@@ -35,7 +42,7 @@ export default function PropertyLinksSection() {
         <div className="flex items-center gap-8 border-b border-gray-200">
           <button
             onClick={() => handleTabChange('residential')}
-            className={`pb-4 text-[13px] md:text-sm font-bold tracking-wider uppercase transition-colors relative ${
+            className={`pb-4 text-[13px] md:text-sm font-bold tracking-wider uppercase transition-colors relative cursor-pointer ${
               activeTab === 'residential' ? 'text-[#C89B4A]' : 'text-gray-500 hover:text-[#C89B4A]'
             }`}
           >
@@ -47,7 +54,7 @@ export default function PropertyLinksSection() {
           
           <button
             onClick={() => handleTabChange('commercial')}
-            className={`pb-4 text-[13px] md:text-sm font-bold tracking-wider uppercase transition-colors relative ${
+            className={`pb-4 text-[13px] md:text-sm font-bold tracking-wider uppercase transition-colors relative cursor-pointer ${
               activeTab === 'commercial' ? 'text-[#C89B4A]' : 'text-gray-500 hover:text-[#C89B4A]'
             }`}
           >
@@ -66,25 +73,25 @@ export default function PropertyLinksSection() {
               
               {activeTab === 'residential' ? (
                 <>
-                  <Link href="#" className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
+                  <Link href={getPropertySearchHref(loc, 'flat')} className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
                     Flats for Sale in {loc}
                   </Link>
-                  <Link href="#" className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
+                  <Link href={getPropertySearchHref(loc)} className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
                     Properties in {loc}
                   </Link>
-                  <Link href="#" className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
+                  <Link href={getPropertySearchHref(loc)} className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
                     Properties for Sale in {loc}
                   </Link>
                 </>
               ) : (
                 <>
-                  <Link href="#" className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
+                  <Link href={getPropertySearchHref(loc, 'office')} className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
                     Offices for Sale in {loc}
                   </Link>
-                  <Link href="#" className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
+                  <Link href={getPropertySearchHref(loc, undefined, 'commercial')} className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
                     Commercial Properties in {loc}
                   </Link>
-                  <Link href="#" className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
+                  <Link href={getPropertySearchHref(loc, 'shop')} className="text-[13px] text-gray-500 hover:text-[#C89B4A] transition-colors cursor-pointer">
                     Shops for Sale in {loc}
                   </Link>
                 </>
@@ -98,7 +105,7 @@ export default function PropertyLinksSection() {
           <div className="mt-10 flex justify-center">
             <button 
               onClick={() => setShowAll(!showAll)}
-              className="px-8 py-2.5 border-2 border-[#C89B4A] text-[#C89B4A] rounded-xl font-bold text-sm hover:bg-[#C89B4A] hover:text-white hover:shadow-[0_8px_20px_rgba(200,155,74,0.2)] hover:-translate-y-0.5 transition-all duration-300"
+              className="px-8 py-2.5 border-2 border-[#C89B4A] text-[#C89B4A] rounded-xl font-bold text-sm hover:bg-[#C89B4A] hover:text-white hover:shadow-[0_8px_20px_rgba(200,155,74,0.2)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
             >
               {showAll ? "See Less" : "See More"}
             </button>

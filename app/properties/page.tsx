@@ -8,10 +8,22 @@ import { usePropertyActions } from '../hooks/usePropertyActions';
 
 export default function PropertyPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchType, setSearchType] = useState("");
+  const [searchCategory, setSearchCategory] = useState("");
   const [properties, setProperties] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   
   const { toggleSave, toggleCompare, isSaved, isCompared } = usePropertyActions();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('query');
+    const type = params.get('type');
+    const category = params.get('category');
+    if (query) setSearchQuery(query);
+    if (type) setSearchType(type);
+    if (category) setSearchCategory(category);
+  }, []);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -52,12 +64,29 @@ export default function PropertyPage() {
   };
 
   const filteredProperties = properties.filter(property => {
-    const query = searchQuery.toLowerCase();
+    const query = searchQuery.toLowerCase().trim();
     const title = (property.propertyName || '').toLowerCase();
     const loc = (property.location || '').toLowerCase();
     const type = (property.propertyType || '').toLowerCase();
+    const configuration = (property.configuration || '').toLowerCase();
+    const category = (property.propertyCategory || '').toLowerCase();
+    const typeText = `${type} ${configuration}`;
+
+    const matchesType = !searchType || (
+      searchType === 'flat'
+        ? /flat|apartment|bhk|studio|penthouse/.test(typeText)
+        : searchType === 'office'
+          ? /office/.test(typeText)
+          : searchType === 'shop'
+            ? /shop|retail/.test(typeText)
+            : typeText.includes(searchType.toLowerCase())
+    );
+    const matchesCategory = !searchCategory || (
+      category.includes(searchCategory.toLowerCase()) ||
+      /office|shop|retail|commercial/.test(typeText)
+    );
     
-    return title.includes(query) || loc.includes(query) || type.includes(query);
+    return matchesType && matchesCategory && (title.includes(query) || loc.includes(query) || type.includes(query) || configuration.includes(query));
   });
 
   const sidebarProperties = properties.slice(0, 6);

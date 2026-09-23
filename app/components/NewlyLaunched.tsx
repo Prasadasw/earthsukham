@@ -13,11 +13,11 @@ interface Project {
 }
 
 const DUMMY_PROJECTS: Project[] = [
-  { id: "1", title: "Earth Sapphire", type: "4 BHK Premium", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800", slug: "#" },
-  { id: "2", title: "Shaligram Prestige", type: "3 BHK Apartment", image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=800", slug: "#" },
-  { id: "3", title: "Dev The Galaxy", type: "3 BHK Apartment", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800", slug: "#" },
-  { id: "4", title: "Ashapura Samarpan", type: "3 BHK Apartment", image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800", slug: "#" },
-  { id: "5", title: "Sukham Residency", type: "5 BHK Villa", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800", slug: "#" }
+  { id: "1", title: "Earth Sapphire", type: "4 BHK Premium", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800", slug: "earth-sapphire" },
+  { id: "2", title: "Shaligram Prestige", type: "3 BHK Apartment", image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=800", slug: "shaligram-prestige" },
+  { id: "3", title: "Dev The Galaxy", type: "3 BHK Apartment", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800", slug: "dev-the-galaxy" },
+  { id: "4", title: "Ashapura Samarpan", type: "3 BHK Apartment", image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=800", slug: "ashapura-samarpan" },
+  { id: "5", title: "Sukham Residency", type: "5 BHK Villa", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800", slug: "sukham-residency" }
 ];
 
 export default function NewlyLaunched() {

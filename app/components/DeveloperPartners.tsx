@@ -12,7 +12,7 @@ export default function DeveloperPartners() {
       };
     }
     return {
-      name: index === 0 ? "Kolte Patil" : index === 3 ? "Trade Centre" : index === 6 ? "Godrej" : `Developer Partner ${index + 1}`,
+      name: index === 0 ? "Kolte Patil" : index === 1 ? "Shapoorji" : index === 3 ? "Trade Centre" : index === 6 ? "Godrej" : `Developer Partner ${index + 1}`,
       image: `/images/partner (${index + 1}).png`
     };
   };

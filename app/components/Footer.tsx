@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { FiFacebook, FiTwitter, FiInstagram, FiYoutube } from "react-icons/fi";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -12,6 +12,7 @@ export default function Footer() {
           EARTH SUKHAM
         </h1>
       </div>
+
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12 z-10">
         
@@ -36,22 +37,18 @@ export default function Footer() {
               About Site
             </h4>
             <p className="text-xs text-gray-600 leading-relaxed max-w-sm">
-              Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the Bride Printing Library. Lorem Ipsum is simply dummy text of the printing and industry. Lorem Ipsum has been the Bride Printing Library.
+             Earth Sukham Realty is a Pune-based real estate consultancy connecting buyers and investors with Category A developers across Pune and Delhi NCR. We offer unbiased advice, no brokerage, and access to pre-launch inventory across residential and investment properties.
             </p>
-            {/* Social Media Monochromatic Icon Badges */}
-            <div className="flex items-center gap-3 pt-2">
-              <Link href="#" className="bg-[#B58A3D] text-white p-2 rounded hover:bg-[#967132] transition cursor-pointer">
-                <FiFacebook size={14} fill="currentColor" stroke="none" />
-              </Link>
-              <Link href="#" className="bg-[#B58A3D] text-white p-2 rounded hover:bg-[#967132] transition cursor-pointer">
-                <FiTwitter size={14} fill="currentColor" stroke="none" />
-              </Link>
-              <Link href="#" className="bg-[#B58A3D] text-white p-2 rounded hover:bg-[#967132] transition cursor-pointer">
-                <FiInstagram size={14} />
-              </Link>
-              <Link href="#" className="bg-[#B58A3D] text-white p-2 rounded hover:bg-[#967132] transition cursor-pointer">
-                <FiYoutube size={14} fill="currentColor" stroke="none" />
-              </Link>
+            <div className="flex gap-3 pt-2">
+              <a href="https://www.facebook.com/share/19174hZJyb/" className="flex h-[30px] w-[30px] items-center justify-center rounded bg-[#1877F2] text-white transition-colors hover:bg-blue-700">
+                <FaFacebookF className="h-[14px] w-[14px]" />
+              </a>
+              <a href="https://www.instagram.com/earthsukham?stkn=MTM0YndoZncyOWFkYw==" className="flex h-[30px] w-[30px] items-center justify-center rounded bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white transition-opacity hover:opacity-90">
+                <FaInstagram className="h-[16px] w-[16px]" />
+              </a>
+              <a href="https://www.linkedin.com/company/earthsukham/" className="flex h-[30px] w-[30px] items-center justify-center rounded bg-[#0A66C2] text-white transition-colors hover:bg-blue-800">
+                <FaLinkedinIn className="h-[14px] w-[14px]" />
+              </a>
             </div>
           </div>
 
@@ -96,6 +93,7 @@ export default function Footer() {
                 <Mail size={16} className="text-[#B58A3D] shrink-0" />
                 <a href="mailto:earthsukham@gmail.com" className="hover:text-[#B58A3D] transition cursor-pointer">
                   earthsukham@gmail.com
+                                    {/* earthsukham@gmail.com */}
                 </a>
               </li>
             </ul>
@@ -103,6 +101,7 @@ export default function Footer() {
 
         </div>
       </div>
+
     </footer>
   );
 }

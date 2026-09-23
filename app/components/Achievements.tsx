@@ -8,19 +8,19 @@ const achievementItems = [
   {
     id: ".01",
     title: "Real Estate",
-    description: "Lorem Ipsum is simply dummy text of the printing and dummy text of the printing industry Lorem Ipsum.",
+    description: "Direct partnerships with Category A developers like Godrej, Lodha, Hiranandani and World Trade Center Pune, unlocking inventory most brokers can't access. ",
     image: "/images/achievement_real_estate.png",
   },
   {
     id: ".02",
-    title: "Educational Accomplishments",
-    description: "Lorem Ipsum is simply dummy text of the printing and dummy text of the printing industry Lorem Ipsum.",
+    title: " Industry Recognition",
+    description: "A trusted advisory partner at investor meets and project launches since 2017, from Taj Vivanta seminars to Godrej's flagship township debuts. ",
     image: "/images/achievement_education.png",
   },
   {
     id: ".03",
-    title: "Real Estate",
-    description: "Lorem Ipsum is simply dummy text of the printing and dummy text of the printing industry Lorem Ipsum.",
+    title: "Milestone Launches",
+    description: "Present at some of Pune and Delhi NCR's biggest real estate moments, including WTC's CBD inaugurations and Godrej Elements and Elaris launches.",
     image: "/images/achievement_commercial.png",
   },
 ];

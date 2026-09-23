@@ -17,14 +17,14 @@ export const coreValues: CoreValueItem[] = [
     id: 1,
     slug: "mission",
     heading: "Mission",
-    description: "Lorem Ipsum is simply dummy text of the printing printing industry. Lorem Ipsum is of the and it.",
+    description: "To make property discovery and investment decisions more transparent, informed and customer-focused by combining market knowledge, project research and personalised advisory.",
     image: missionImg,
   },
   {
     id: 2,
     slug: "vision",
     heading: "Vision",
-    description: "Lorem Ipsum is simply dummy text of the printing printing industry. Lorem Ipsum is of the and it.",
+    description: "To become a trusted real estate advisory brand connecting buyers and investors with quality property opportunities across Pune and selected markets in India.",
     image: visionImg,
   },
 ];

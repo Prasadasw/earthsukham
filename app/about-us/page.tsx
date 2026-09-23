@@ -11,19 +11,19 @@ import CallToAction from '../components/CallToAction';
 const valuesData = [
   {
     title: "Integrity",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing industry Lorem Ipsum is of the and it.",
+    description: "We believe property advice should be transparent and based on the customer's requirements.",
   },
   {
     title: "Innovation",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing industry Lorem Ipsum is of the and it.",
+    description: "We continuously improve how customers discover, compare and evaluate property opportunities.",
   },
   {
     title: "Customer-Centric",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing industry Lorem Ipsum is of the and it.",
+    description: "The right property depends on the individual. We begin with understanding the customer before suggesting options.",
   },
   {
     title: "Excellence",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing industry Lorem Ipsum is of the and it.",
+    description: "We aim to provide consistent service from the first consultation through the property journey.",
   },
 ];
 
@@ -81,6 +81,13 @@ const CounterItem = ({ target, suffix = "", label }: { target: number; suffix?: 
 };
 
 export default function AboutUsPage() {
+  const [showMoreStory, setShowMoreStory] = useState(false);
+
+  const storyPreview =
+    "Earth Sukham was built to make property decisions more structured, transparent and customer-focused. With experience across developer launches, investor meets and property events involving brands such as World Trade Center and Godrej, we bring practical market understanding to every conversation.";
+
+  const storyFullText = `${storyPreview}\n\nWhether you are buying your first home, upgrading your lifestyle or exploring an investment, we help you find opportunities aligned with your goals.`;
+
   return (
     <div className="bg-[#FCF9F4] min-h-screen font-serif text-[#2D2D2D] w-full overflow-x-hidden">
       
@@ -121,9 +128,9 @@ export default function AboutUsPage() {
           </h2>
           
           <p className="font-sans text-[#5A5A5A] text-sm md:text-[15px] leading-relaxed max-w-[950px]">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy 
-            theprintingLorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum simply 
-            dummy text of the printingLorem Ipsum is simply dummy text of the printing and typesetting industry Lorm
+            Earth Sukham Realty Private Limited is a real estate consultancy focused on helping homebuyers, investors and property seekers identify suitable residential and commercial opportunities.
+With a strong understanding of Pune's evolving micro-markets, our team connects customer requirements with projects from established developers.
+
           </p>
         </div>
 
@@ -136,18 +143,36 @@ export default function AboutUsPage() {
                 Our Story
               </span>
               <h3 className="text-3xl md:text-[38px] text-[#1A1A1A] font-serif font-normal leading-tight tracking-normal">
-                Building Dreams,<br /> Creating Landmarks
+                From Property Transactions to,<br /> Long-Term Relationship
               </h3>
             </div>
             
             <div className="md:col-span-7 font-sans text-[#5A5A5A] text-sm md:text-[15px] leading-relaxed md:pt-10">
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing industry 
-                Lorem Ipsum is of the and it is printingLorem Ipsum is simply dummy text of the printing and typesetting 
-                dummy text of the printing industr...{' '}
-                <a href="#" className="text-[#C59B27] hover:underline font-medium inline-block transition-colors ml-1 cursor-pointer">
-                  Read more
-                </a>
+                {showMoreStory ? (
+                  <>
+                    {storyFullText}{' '}
+                    <button
+                      type="button"
+                      onClick={() => setShowMoreStory(false)}
+                      className="text-[#C59B27] hover:underline font-medium inline-block transition-colors cursor-pointer"
+                    >
+                      Read less
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {storyPreview}
+                    <span className="text-[#5A5A5A]">...</span>{' '}
+                    <button
+                      type="button"
+                      onClick={() => setShowMoreStory(true)}
+                      className="text-[#C59B27] hover:underline font-medium inline-block transition-colors cursor-pointer"
+                    >
+                      Read more
+                    </button>
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -192,12 +217,12 @@ export default function AboutUsPage() {
                 </div>
       
                 {/* Right Side Container: Global paragraph and value stack rows */}
-                <div className="lg:col-span-7 flex flex-col ">
+                <div className="lg:col-span-7 mt-24  flex flex-col ">
                   
                   {/* Global Description paragraph at top */}
-                  <p className="text-zinc-600 text-[15px] leading-relaxed mb-10 max-w-2xl font-light">
+                  {/* <p className="text-zinc-600 text-[15px] leading-relaxed mb-10 max-w-2xl font-light">
                     Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing industry Lorem Ipsum is of the and it is
-                  </p>
+                  </p> */}
       
                   {/* List Array Separated Rows */}
                   <div className="w-full flex flex-col border-t border-zinc-300/60">

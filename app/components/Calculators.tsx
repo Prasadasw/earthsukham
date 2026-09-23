@@ -67,7 +67,7 @@ export default function Calculators() {
       <div className="flex border-b border-gray-200">
         <button
           onClick={() => setActiveTab('emi')}
-          className={`flex-1 py-4 px-6 text-center font-semibold text-sm transition-colors flex items-center justify-center gap-2
+          className={`flex-1 py-4 px-6 text-center font-semibold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer
             ${activeTab === 'emi' ? 'bg-[#224295] text-white' : 'text-gray-600 hover:bg-gray-50'}`}
         >
           <Calculator size={18} />
@@ -75,7 +75,7 @@ export default function Calculators() {
         </button>
         <button
           onClick={() => setActiveTab('roi')}
-          className={`flex-1 py-4 px-6 text-center font-semibold text-sm transition-colors flex items-center justify-center gap-2
+          className={`flex-1 py-4 px-6 text-center font-semibold text-sm transition-colors flex items-center justify-center gap-2 cursor-pointer
             ${activeTab === 'roi' ? 'bg-[#224295] text-white' : 'text-gray-600 hover:bg-gray-50'}`}
         >
           <TrendingUp size={18} />

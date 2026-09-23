@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function CallToAction() {
   return (
@@ -14,18 +15,20 @@ export default function CallToAction() {
         {/* Left Side: Headline */}
         <div className="md:w-1/2 w-full">
           <h2 className="text-4xl md:text-[3.8rem] font-serif text-white leading-[1.15]">
-            Start Your Property<br />Journey Today
+            Start Your Property Journey Today
           </h2>
         </div>
 
         {/* Right Side: Text & Button */}
         <div className="md:w-1/2 w-full flex flex-col items-start md:pl-16">
           <p className="text-gray-200 text-[15px] md:text-[16px] leading-relaxed mb-6 max-w-lg">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing.
+          From your first home in Hinjewadi to a high-yield retail investment, our team gets you in front of the right developers, at the right price, with zero brokerage.
           </p>
-          <button className="bg-[#C89B4A] hover:bg-[#b0853b] text-white px-8 py-3.5 rounded-[4px] font-semibold text-sm transition flex items-center gap-2 cursor-pointer">
+          <Link 
+          href="/contact-us" 
+          className="bg-[#C89B4A] hover:bg-[#b0853b] text-white px-8 py-3.5 rounded-[4px] font-semibold text-sm transition flex items-center gap-2 cursor-pointer">
             Contact Us <ChevronRight size={18} strokeWidth={2.5} />
-          </button>
+          </Link>
         </div>
 
       </div>

@@ -36,7 +36,7 @@ export default function FloatingActionButtons() {
       <div className="fixed right-6 bottom-20 z-50 flex flex-col items-center gap-4">
         <button 
           onClick={scrollToTopOrBottom}
-          className="w-11 h-11 bg-[#0A0E17] rounded shadow-[0_4px_14px_rgba(0,0,0,0.3)] flex items-center justify-center text-white hover:bg-black transition-transform hover:-translate-y-1"
+          className="w-11 h-11 bg-[#0A0E17] rounded shadow-[0_4px_14px_rgba(0,0,0,0.3)] flex items-center justify-center text-white hover:bg-black transition-transform hover:-translate-y-1 cursor-pointer"
         >
           {isScrolledDown ? <ArrowUp size={22} /> : <ArrowDown size={22} />}
         </button>

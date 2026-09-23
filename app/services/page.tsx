@@ -129,11 +129,20 @@ export default function ServicesPage() {
                 />
               </div>
               <div className="w-full md:w-1/2">
-                <h2 className="text-[28px] md:text-3xl font-serif text-[#C19B54] mb-6 leading-snug">Selling Properties <br/> & Plots</h2>
+                <h2 className="text-[28px] md:text-3xl font-serif text-[#C19B54] mb-6 leading-snug">Find the Right Property With Expert Guidances</h2>
                 <div className="pl-5 md:pl-6 border-l-2 md:border-l-[3px] border-[#C19B54]">
-                  <p className="text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing And industry. Lorem Ipsum is of the and it is LoremIpsum is simply dummy text of the printing and typesetting dummy text of the printing And industry. Lorem Ipsum is of the and it is LoremIpsum is of the and it is Lorem Ipsum is simply dummy text the printing and typesetting dummy text of the printing industry. Lorem Ipsum is of the and it.
-                  </p>
+                  <div className="text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
+                    <p>We help buyers discover residential and commercial properties based on their:</p>
+                    <ul className="mt-3 list-disc space-y-1 pl-5">
+                      <li>Budget</li>
+                      <li>Preferred location</li>
+                      <li>Property configuration</li>
+                      <li>Lifestyle requirements</li>
+                      <li>Developer preferences</li>
+                      <li>Investment objectives</li>
+                    </ul>
+                    <p className="mt-4">Our team helps shortlist suitable projects, coordinate property visits and support the buyer through the decision-making process.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -148,12 +157,23 @@ export default function ServicesPage() {
                   className="object-cover hover:scale-105 transition-transform duration-700" 
                 />
               </div>
-              <div className="w-full md:w-1/2 flex flex-col items-start md:items-end">
-                <h2 className="text-[28px] md:text-3xl font-serif text-[#C19B54] mb-6 leading-snug md:text-right">Reselling and <br/> Purchasing</h2>
-                <div className="pr-5 md:pr-6 border-l-2 md:border-l-0 md:border-r-[3px] border-[#C19B54]">
-                  <p className="text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium md:text-right">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing And industry. Lorem Ipsum is of the and it is LoremIpsum is simply dummy text of the printing and typesetting dummy text of the printing And industry. Lorem Ipsum is of the and it is LoremIpsum is of the and it is Lorem Ipsum is simply dummy text the printing and typesetting dummy text of the printing industry. Lorem Ipsum is of the and it.
+              <div className="w-full md:w-1/2 flex flex-col items-start">
+                <h2 className="text-[28px] md:text-3xl font-serif text-[#C19B54] mb-6 leading-snug">Support for Buying or Selling a Property</h2>
+                <div className="pl-5 md:pl-6 border-l-2 md:border-l-[3px] border-[#C19B54]">
+                  <p className="text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
+                    Whether you&apos;re purchasing a resale property or looking to sell an existing asset, the right market information can make the process easier.
                   </p>
+                  <p className="mt-4 text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
+                    Our team can assist with:
+                  </p>
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
+                    <li>Requirement assessment</li>
+                    <li>Property shortlisting</li>
+                    <li>Market-based comparisons</li>
+                    <li>Buyer/seller coordination</li>
+                    <li>Site visits</li>
+                    <li>Transaction support</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -169,10 +189,12 @@ export default function ServicesPage() {
                 />
               </div>
               <div className="w-full md:w-1/2">
-                <h2 className="text-[28px] md:text-3xl font-serif text-[#C19B54] mb-6 leading-snug">Construction <br/> Projects</h2>
+                <h2 className="text-[28px] md:text-3xl font-serif text-[#C19B54] mb-6 leading-snug">Property & Construction Opportunities</h2>
                 <div className="pl-5 md:pl-6 border-l-2 md:border-l-[3px] border-[#C19B54]">
                   <p className="text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of the printing And industry. Lorem Ipsum is of the and it is LoremIpsum is simply dummy text of the printing and typesetting dummy text of the printing And industry. Lorem Ipsum is of the and it is LoremIpsum is of the and it is Lorem Ipsum is simply dummy text the printing and typesetting dummy text of the printing industry. Lorem Ipsum is of the and it.
+                   For customers interested in construction-related opportunities, Earth Sukham can provide guidance around suitable projects and requirements based on the scope and location.<br />
+Where third-party professionals or specialist approvals are required, customers should engage the relevant qualified professionals.
+
                   </p>
                 </div>
               </div>

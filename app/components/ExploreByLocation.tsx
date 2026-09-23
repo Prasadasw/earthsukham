@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
-import { MapPin } from "lucide-react";
+import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const REGIONS = ["Central Pune", "East Pune", "West Pune", "North Pune", "PCMC"];
 
@@ -50,22 +51,50 @@ const LOCATIONS = [
 
 export default function ExploreByLocation() {
   const [activeRegion, setActiveRegion] = useState("Central Pune");
+  const locationsSliderRef = useRef<HTMLDivElement>(null);
 
   const filteredLocations = LOCATIONS.filter(loc => loc.region === activeRegion);
 
   // Fallback to show something if the region doesn't have many locations
   const displayLocations = filteredLocations.length > 0 ? filteredLocations : LOCATIONS.slice(0, 5);
 
+  const scrollLocations = (direction: "left" | "right") => {
+    locationsSliderRef.current?.scrollBy({
+      left: direction === "right" ? 560 : -560,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="bg-[#FAF8F5] py-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Title Area */}
-        <div className="space-y-2 mb-8">
-          <span className="text-sm font-serif uppercase tracking-widest font-semibold text-[#C19B54]">Property Status</span>
-          <h2 className="text-4xl md:text-[3.5rem] font-serif text-[#2C2C2C] leading-tight">
-            Explore by Location
-          </h2>
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div className="space-y-2">
+            <span className="text-sm font-serif uppercase tracking-widest font-semibold text-[#C19B54]">Property Status</span>
+            <h2 className="text-4xl md:text-[3.5rem] font-serif text-[#2C2C2C] leading-tight">
+              Explore by Location
+            </h2>
+          </div>
+          <div className="flex shrink-0 gap-2">
+            <button
+              type="button"
+              onClick={() => scrollLocations("left")}
+              aria-label="Show previous locations"
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#D5B980] bg-white text-[#A88532] transition hover:bg-[#A88532] hover:text-white"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollLocations("right")}
+              aria-label="Show more locations"
+              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#D5B980] bg-white text-[#A88532] transition hover:bg-[#A88532] hover:text-white"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Filter Tabs */}
@@ -74,7 +103,7 @@ export default function ExploreByLocation() {
             <button
               key={region}
               onClick={() => setActiveRegion(region)}
-              className={`text-[13px] md:text-[14px] font-medium px-6 py-3 whitespace-nowrap transition ${
+              className={`text-[13px] md:text-[14px] font-medium px-6 py-3 whitespace-nowrap cursor-pointer transition ${
                 activeRegion === region
                   ? "bg-[#A88532] text-white"
                   : "bg-transparent text-[#C2A366] hover:bg-[#A88532]/5"
@@ -86,9 +115,10 @@ export default function ExploreByLocation() {
         </div>
 
         {/* Location Cards */}
-        <div className="flex gap-6 overflow-x-auto pb-10 pt-4 px-2 -mx-2 hide-scrollbar">
+        <div ref={locationsSliderRef} className="flex gap-6 overflow-x-auto pb-10 pt-4 px-2 -mx-2 hide-scrollbar scroll-smooth">
           {displayLocations.map((loc, idx) => (
-            <div 
+            <Link
+              href={`/properties?query=${encodeURIComponent(loc.name)}`}
               key={idx}
               className="flex-shrink-0 w-[240px] md:w-[260px] h-[250px] bg-white bg-no-repeat bg-bottom bg-contain rounded-[16px] shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex flex-col pt-8 px-6 overflow-hidden cursor-pointer hover:-translate-y-1 transition-transform duration-300"
               style={{ backgroundImage: `url('/images/location-bg.png')` }}
@@ -104,7 +134,7 @@ export default function ExploreByLocation() {
               </div>
               
            
-            </div>
+            </Link>
           ))}
         </div>
 

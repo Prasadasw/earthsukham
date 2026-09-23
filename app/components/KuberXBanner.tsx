@@ -23,13 +23,6 @@ const KuberXBanner = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-[#2C2C2C] via-[#2C2C2C]/90 md:via-[#2C2C2C]/70 to-transparent"></div>
         </div>
         
-        {/* Top Right Label */}
-        <div className="absolute top-4 right-6 md:top-6 md:right-8 z-10 flex items-center">
-            <div className="flex items-center font-bold text-[#C19B54] bg-white/10 px-3 py-1 rounded-full text-xs md:text-sm tracking-wide border border-[#C19B54]/30 backdrop-blur-sm">
-                Exclusive Partner Offers
-            </div>
-        </div>
-
         {/* Content on Left */}
         <div className="relative z-10 p-8 md:p-12 lg:p-16 md:w-3/5 lg:w-1/2 flex flex-col justify-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">

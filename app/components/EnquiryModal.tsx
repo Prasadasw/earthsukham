@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -11,33 +12,66 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-sm sm:p-4">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="enquiry-title"
+        className="relative grid max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl animate-in fade-in zoom-in duration-200 sm:max-h-[calc(100dvh-2rem)] md:grid-cols-2"
+      >
+        <div className="relative hidden min-h-[560px] md:block">
+          <Image
+            src="/images/aboutbanner.jpg"
+            alt="Residential property"
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          <div className="absolute bottom-8 left-8 right-8 text-white">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f3d28b]">Earth Sukham</p>
+            <p className="mt-2 text-2xl font-serif leading-tight">Let&apos;s find a place that feels right.</p>
+          </div>
+        </div>
+
+        <div className="min-w-0 overflow-y-auto">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors z-10 cursor-pointer"
+          className="absolute right-4 top-4 z-10 cursor-pointer text-gray-400 transition-colors hover:text-gray-900"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         
-        <div className="bg-[#FBF9F4] p-6 text-center border-b border-[#e6dcc6]">
-          <h2 className="text-2xl font-serif text-[#C19B54]">Enquire Now</h2>
-          <p className="text-sm text-gray-500 mt-1">Please fill in your details and we'll get back to you.</p>
+        <div className="border-b border-[#e6dcc6] bg-[#FBF9F4] px-5 py-5 text-center sm:p-6 md:px-8 md:py-7">
+          <h2 id="enquiry-title" className="text-2xl font-serif text-[#C19B54]">Enquire Now</h2>
+          <p className="mt-1 text-sm text-gray-500">Please fill in your details and we&apos;ll get back to you.</p>
         </div>
         
-        <div className="p-6">
-          <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
+        <div className="p-5 sm:p-6 md:p-8">
+          <form
+            className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (e.currentTarget.reportValidity()) onClose();
+            }}
+          >
             <div>
-              <input type="text" placeholder="Your Name" className="w-full px-4 py-3 bg-[#f8f9fa] text-gray-800 border-none rounded-lg focus:outline-none focus:ring-1 focus:ring-[#9c7827] placeholder:text-gray-500 text-[14px]" required />
+              <label htmlFor="enquiry-name" className="mb-1.5 block text-sm font-medium text-gray-700">Your name</label>
+              <input id="enquiry-name" name="name" type="text" autoComplete="name" placeholder="Enter your name" className="w-full rounded-lg bg-[#f8f9fa] px-4 py-3 text-[14px] text-gray-800 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-[#9c7827]" required />
             </div>
             <div>
-              <input type="email" placeholder="Your Email" className="w-full px-4 py-3 bg-[#f8f9fa] text-gray-800 border-none rounded-lg focus:outline-none focus:ring-1 focus:ring-[#9c7827] placeholder:text-gray-500 text-[14px]" required />
+              <label htmlFor="enquiry-email" className="mb-1.5 block text-sm font-medium text-gray-700">Email address</label>
+              <input id="enquiry-email" name="email" type="email" autoComplete="email" placeholder="Enter your email" className="w-full rounded-lg bg-[#f8f9fa] px-4 py-3 text-[14px] text-gray-800 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-[#9c7827]" required />
             </div>
             <div>
+              <label htmlFor="enquiry-phone" className="mb-1.5 block text-sm font-medium text-gray-700">Mobile number</label>
               <input 
+                id="enquiry-phone"
+                name="phone"
                 type="tel" 
-                placeholder="Mobile Number" 
-                className="w-full px-4 py-3 bg-[#f8f9fa] text-gray-800 border-none rounded-lg focus:outline-none focus:ring-1 focus:ring-[#9c7827] placeholder:text-gray-500 text-[14px]" 
+                autoComplete="tel"
+                placeholder="Enter your 10-digit number" 
+                className="w-full rounded-lg bg-[#f8f9fa] px-4 py-3 text-[14px] text-gray-800 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-[#9c7827]" 
                 required 
                 pattern="[0-9]{10}"
                 maxLength={10}
@@ -46,6 +80,18 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
                 onInput={(e) => {
                   e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
                 }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="enquiry-message" className="mb-1.5 block text-sm font-medium text-gray-700">Message</label>
+              <textarea
+                id="enquiry-message"
+                name="message"
+                placeholder="Tell us how we can help"
+                rows={3}
+                className="w-full resize-none rounded-lg border-none bg-[#f8f9fa] px-4 py-3 text-[14px] text-gray-800 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-[#9c7827]"
+                required
               />
             </div>
             
@@ -65,6 +111,7 @@ export default function EnquiryModal({ isOpen, onClose }: EnquiryModalProps) {
               Submit Enquiry
             </button>
           </form>
+        </div>
         </div>
       </div>
     </div>

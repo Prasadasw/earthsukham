@@ -22,9 +22,9 @@ interface Project {
 const TABS = ["View All Properties", "New Launches", "Ready Possession"];
 
 const DUMMY_PROJECTS: Project[] = [
-  { id: "1", title: "Sadhna Obsidian", location: "Jagatpur, Ahmedabad", type: "4,5 BHK Apartment", category: "Township", price: "₹ 1.9 Cr Onwards", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800", status: "Ready Possession", slug: "#" },
-  { id: "2", title: "Dev The Galaxy", location: "Shela", type: "3 BHK Apartment", category: "Residences", price: "₹ 1.11 Cr Onwards", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800", status: "New Launches", slug: "#" },
-  { id: "3", title: "Sukham Residency", location: "SG Highway", type: "5 BHK Villa", category: "Villas", price: "₹ 2.2 Cr Onwards", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800", status: "Ready Possession", slug: "#" }
+  { id: "1", title: "Sadhna Obsidian", location: "Jagatpur, Ahmedabad", type: "4,5 BHK Apartment", category: "Township", price: "₹ 1.9 Cr Onwards", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800", status: "Ready Possession", slug: "sadhna-obsidian" },
+  { id: "2", title: "Dev The Galaxy", location: "Shela", type: "3 BHK Apartment", category: "Residences", price: "₹ 1.11 Cr Onwards", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800", status: "New Launches", slug: "dev-the-galaxy" },
+  { id: "3", title: "Sukham Residency", location: "SG Highway", type: "5 BHK Villa", category: "Villas", price: "₹ 2.2 Cr Onwards", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800", status: "Ready Possession", slug: "sukham-residency" }
 ];
 
 function OngoingProjectsContent() {
@@ -143,23 +143,23 @@ function OngoingProjectsContent() {
   };
 
   return (
-    <section className="bg-[#FAF8F5] py-16">
+    <section className="bg-[#FAF8F5] py-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Title area */}
-        <div className="space-y-2 mb-10">
+        <div className="space-y-2 mb-8">
            <span className="text-sm font-serif uppercase tracking-widest font-semibold text-[#C19B54]">Property Status</span>
             <h2 className="text-5xl lg:text-6xl font-serif text-[#2C2C2C] leading-[1.15]">
                Ongoing & Upcoming Properties</h2>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex w-fit rounded-[4px] border border-[#D5B980] overflow-hidden mb-16 max-w-full overflow-x-auto">
+        <div className="flex w-fit rounded-[4px] border border-[#D5B980] overflow-hidden mb-12 max-w-full overflow-x-auto">
           {TABS.map((tab, index) => (
             <button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`text-[13px] md:text-[14px] font-medium px-6 md:px-8 py-3 whitespace-nowrap transition ${
+              className={`text-[13px] md:text-[14px] font-medium px-6 md:px-8 py-3 whitespace-nowrap transition cursor-pointer ${
                 activeTab === tab
                   ? "bg-[#A88532] text-white"
                   : "bg-transparent text-[#C2A366] hover:bg-[#A88532]/5"

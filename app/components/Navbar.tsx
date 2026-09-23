@@ -193,7 +193,7 @@ export default function Navbar() {
               Login
             </Link>
           )}
-          <button onClick={() => setIsModalOpen(true)} className="bg-[#C19B54] text-white px-6 py-2.5 rounded text-sm font-semibold hover:bg-[#A88648] transition">
+          <button onClick={() => setIsModalOpen(true)} className="bg-[#C19B54] text-white px-6 py-2.5 rounded text-sm font-semibold hover:bg-[#A88648] transition cursor-pointer">
             Enquiry Now
           </button>
         </div>
